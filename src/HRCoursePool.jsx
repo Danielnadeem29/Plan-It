@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import './HRCoursePool.css';
 import { CourseContext } from './CourseContext'; // Import the context
 import { FaEdit, FaTrashAlt } from 'react-icons/fa'; // Icons for edit and remove
+import moment from 'moment'; // Added moment for time formatting
 
 const predefinedProfessors = [
   'Dr. Smith', 'Prof. Johnson', 'Dr. Brown', 'Prof. Lee', 'Dr. Miller',
@@ -15,16 +16,24 @@ const HRCoursePool = () => {
   const [courseName, setCourseName] = useState('');
   const [courseCode, setCourseCode] = useState('');
   const [credits, setCredits] = useState('');
-  const [days, setDays] = useState(''); // State for selected days
-  const [professor, setProfessor] = useState(''); // State for selected professor
-  const [newProfessor, setNewProfessor] = useState(''); // State for adding new professor
+  const [days, setDays] = useState('');
+  const [professor, setProfessor] = useState('');
   const [editingCourse, setEditingCourse] = useState(null);
 
   const handleAddCourse = (e) => {
     e.preventDefault();
     if (courseName && courseCode && credits && days && professor) {
-      const newCourse = { courseName, courseCode, credits, days, professor };
-      addCourse(newCourse); // Add course
+      const newCourse = {
+        courseName,
+        courseCode,
+        credits,
+        days: days.split('-'),
+        professor,
+        startTime: moment('09:00 AM', 'h:mm A'), // Example start time
+        endTime: moment('10:30 AM', 'h:mm A'),  // Example end time
+        duration: 1.5,
+      };
+      addCourse(newCourse);
       resetForm();
     } else {
       alert('Please fill in all fields');
@@ -35,26 +44,26 @@ const HRCoursePool = () => {
     setCourseName(course.courseName);
     setCourseCode(course.courseCode);
     setCredits(course.credits);
-    setDays(course.days);
-    setProfessor(course.professor); // Set selected professor
+    setDays(course.days.join('-'));
+    setProfessor(course.professor);
     setEditingCourse(course);
   };
 
   const handleUpdateCourse = (e) => {
     e.preventDefault();
     if (courseName && credits && days && professor) {
-      const updatedCourse = { ...editingCourse, courseName, credits, days, professor }; // Update course details
-      removeCourse(editingCourse.courseCode); // Remove the old course
-      addCourse(updatedCourse); // Add the updated course
+      const updatedCourse = { ...editingCourse, courseName, credits, days, professor };
+      removeCourse(editingCourse.courseCode);
+      addCourse(updatedCourse);
       resetForm();
-      setEditingCourse(null); // Exit edit mode
+      setEditingCourse(null);
     } else {
       alert('Please fill in all fields');
     }
   };
 
   const handleRemoveCourse = (courseCode) => {
-    removeCourse(courseCode); // Remove course
+    removeCourse(courseCode);
   };
 
   const resetForm = () => {
@@ -63,22 +72,11 @@ const HRCoursePool = () => {
     setCredits('');
     setDays('');
     setProfessor('');
-    setNewProfessor(''); // Reset new professor input
-    setEditingCourse(null); // Reset form and edit state
+    setEditingCourse(null);
   };
 
   const handleProfessorChange = (e) => {
-    setProfessor(e.target.value); // Update selected professor
-  };
-
-  const handleNewProfessor = () => {
-    if (newProfessor.trim()) {
-      predefinedProfessors.push(newProfessor);
-      setProfessor(newProfessor); // Set new professor as selected
-      setNewProfessor(''); // Clear input
-    } else {
-      alert('Enter a valid professor name');
-    }
+    setProfessor(e.target.value);
   };
 
   return (
@@ -125,17 +123,6 @@ const HRCoursePool = () => {
           ))}
         </select>
 
-        {/* Input for adding new professor */}
-        <input
-          type="text"
-          placeholder="Add New Professor"
-          value={newProfessor}
-          onChange={(e) => setNewProfessor(e.target.value)}
-        />
-        <button type="button" onClick={handleNewProfessor} className="add-professor-button">
-          Add Professor
-        </button>
-
         <button type="submit" className="add-course-button">
           {editingCourse ? 'Update Course' : 'Add Course'}
         </button>
@@ -149,7 +136,7 @@ const HRCoursePool = () => {
           <ul>
             {courses.map((course, index) => (
               <li key={index} className="course-item">
-                <span>{course.courseName} ({course.courseCode}) - {course.credits} credits - {course.days} - {course.professor}</span>
+                <span>{course.courseName} ({course.courseCode}) - {course.credits} credits - {course.days.join(', ')} - {course.professor}</span>
                 <div>
                   <button className="edit-btn" onClick={() => handleEditCourse(course)}>
                     <FaEdit /> Edit

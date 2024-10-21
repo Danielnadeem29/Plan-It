@@ -54,8 +54,11 @@
   animation: fadeInUp 1.2s forwards;
 }
 
+/* Scroll-Down Button */
 .scroll-down {
-  padding: 10px 20px;
+  margin-top: 20px; /* Move it down by 20px (was 50px before) */
+  padding: 15px 40px; /* Increased padding to make it bigger */
+  font-size: 1.2rem; /* Increased font size */
   background-color: #9a7e6f; /* Button background */
   color: white;
   border-radius: 50px;

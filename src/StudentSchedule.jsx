@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { CourseContext } from './CourseContext'; // Import the context
+import { CourseContext } from './CourseContext';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
