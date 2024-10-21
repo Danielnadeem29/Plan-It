@@ -95,6 +95,11 @@
   margin: 0 auto; /* Center the text */
 }
 
+/* Add more space at the bottom of About Section */
+#about-section {
+  padding-bottom: 200px; /* Increased bottom padding to prevent overlap */
+}
+
 /* Feature card styling */
 .features {
   display: flex;
@@ -128,8 +133,12 @@
 
 /* Login Section */
 .login-section {
-  padding: 100px 20px; /* Increased padding for more breathing room */
+  height: 100vh; /* Make the section take up the entire viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #e9eed9; /* Light background */
+  padding: 0 20px; /* Remove extra padding to make it fill the screen */
 }
 
 .login-container {
@@ -234,7 +243,7 @@ p {
   font-weight: bold;
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease;
-  margin: 10px;
+  margin-top: 40px; /* Added margin to move the button down */
   position: relative;
   z-index: 2; /* Keep buttons above the circle */
 }
