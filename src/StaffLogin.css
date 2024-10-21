@@ -14,8 +14,8 @@
   height: 100vh;
   background: linear-gradient(
     135deg,
-    #cbd2a4,
-    #e9eed9
+    #CBD2A4,
+    #E9EED9
   ); /* Updated background gradient */
   position: relative;
 }
@@ -45,11 +45,11 @@
 .login-box h1 {
   margin-bottom: 10px;
   font-size: 2.5rem;
-  color: #54473f;
+  color: #54473F;
 }
 
 .login-box .subtext {
-  color: #9a7e6f;
+  color: #9A7E6F;
   margin-bottom: 30px;
 }
 
@@ -67,13 +67,13 @@
 .input-group input {
   padding: 12px 15px 12px 40px; /* Adjust padding for icons */
   width: 100%;
-  border: 1px solid #cbd2a4; /* Input border */
+  border: 1px solid #CBD2A4; /* Input border */
   border-radius: 8px;
   transition: border-color 0.3s;
 }
 
 .input-group input:focus {
-  border-color: #9a7e6f;
+  border-color: #9A7E6F;
   outline: none;
 }
 
@@ -83,14 +83,14 @@
   top: 50%;
   left: 12px;
   transform: translateY(-50%);
-  color: #9a7e6f;
+  color: #9A7E6F;
   font-size: 1.2rem;
 }
 
 /* Button Styling */
 .submit-btn {
   padding: 12px 20px;
-  background-color: #9a7e6f;
+  background-color: #9A7E6F;
   color: white;
   font-size: 1.1rem;
   font-weight: bold;
@@ -101,13 +101,13 @@
 }
 
 .submit-btn:hover {
-  background-color: #54473f;
+  background-color: #54473F;
   transform: translateY(-3px);
 }
 
 /* Error Message Styling */
 .error-message {
-  color: #ff4d4d;
+  color: #FF4D4D;
   font-size: 0.9rem;
   margin-top: 15px;
 }
@@ -115,13 +115,13 @@
 /* Forgot Password Link */
 .forgot-password {
   margin-top: 20px;
-  color: #9a7e6f;
+  color: #9A7E6F;
   font-size: 0.9rem;
   cursor: pointer;
 }
 
 .forgot-password:hover {
-  color: #54473f;
+  color: #54473F;
 }
 
 /* Animations */

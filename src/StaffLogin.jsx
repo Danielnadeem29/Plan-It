@@ -1,42 +1,40 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './LoginPage.css';
-import { FaEnvelope, FaLock } from 'react-icons/fa'; // Import icons for email and password
+import './StaffLogin.css'; // Import staff login-specific CSS
+import { FaUserTie, FaLock } from 'react-icons/fa'; // Import icons for staff ID and password
 
-const LoginPage = () => {
-  const [email, setEmail] = useState('');
+function StaffLogin() {
+  const [staffID, setStaffID] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Initialize the navigate hook
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent form from refreshing the page
+    e.preventDefault();
 
-    // Mock login validation (replace this with your actual login logic)
-    if (email === 'student@example.com' && password === 'passw123') {
-      // On successful login, redirect to the student dashboard
-      navigate('/student-dashboard');
+    // Mock login validation (replace with actual logic)
+    if (staffID === 'hrstaff' && password === 'password123') {
+      navigate('/staff-dashboard'); // Redirect to the HR dashboard
     } else {
-      // If the login fails, show an error message
-      setError('Invalid email or password');
+      setError('Invalid credentials'); // Handle login failure
     }
-  }
+  };
 
   return (
     <div className="login-page">
       <div className="overlay"></div> {/* Background overlay */}
       <div className="login-box">
-        <h1>Welcome Back</h1>
-        <p className="subtext">Login to continue</p>
+        <h1>HR Staff Login</h1>
+        <p className="subtext">Login to access your dashboard</p>
         <form onSubmit={handleSubmit} className="login-form">
           <div className="input-group">
-            <FaEnvelope className="input-icon" /> {/* Email Icon */}
+            <FaUserTie className="input-icon" /> {/* Staff ID Icon */}
             <input 
-              type="email" 
-              placeholder="Email" 
-              value={email} 
-              onChange={(e) => setEmail(e.target.value)} 
-              required
+              type="text" 
+              placeholder="Staff ID" 
+              value={staffID} 
+              onChange={(e) => setStaffID(e.target.value)} 
+              required 
             />
           </div>
           <div className="input-group">
@@ -46,7 +44,7 @@ const LoginPage = () => {
               placeholder="Password" 
               value={password} 
               onChange={(e) => setPassword(e.target.value)} 
-              required
+              required 
             />
           </div>
           <button type="submit" className="submit-btn">Login</button>
@@ -58,4 +56,4 @@ const LoginPage = () => {
   );
 }
 
-export default LoginPage;
+export default StaffLogin;

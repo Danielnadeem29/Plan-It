@@ -1,0 +1,150 @@
+.hr-course-pool {
+  padding: 40px;
+  background: linear-gradient(135deg, #e9eed9, #cbd2a4);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.hr-course-pool h1 {
+  font-size: 3rem;
+  color: #333;
+  margin-bottom: 40px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.add-course-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 30px;
+}
+
+.add-course-form input,
+.add-course-form select {
+  padding: 15px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  transition: border-color 0.3s;
+}
+
+.add-course-form input:focus,
+.add-course-form select:focus {
+  border-color: #3174ad;
+}
+
+.add-course-button,
+.cancel-button {
+  padding: 12px;
+  font-size: 1.1rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-course-button:hover,
+.cancel-button:hover {
+  background-color: #218838;
+}
+
+.cancel-button {
+  background-color: #dc3545;
+}
+
+.course-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the entire course list */
+  width: 100%;
+  max-width: 600px;
+}
+
+.course-list-container h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #2c3e50;
+  text-align: center; /* Center the Available Courses heading */
+}
+
+.course-list {
+  display: flex;
+  flex-wrap: wrap; /* Allows the courses to wrap if there are many */
+  justify-content: center; /* Center the course items horizontally */
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.course-item {
+  background-color: #fff;
+  border: 1px solid #e1e7ec;
+  border-radius: 10px;
+  width: 280px;
+  margin: 10px;
+  padding: 20px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05); /* Soft shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Center the content inside each course card */
+}
+
+.course-item:hover {
+  transform: translateY(-5px); /* Lift the card on hover */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); /* Deeper shadow on hover */
+}
+
+.course-details h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #34495e;
+  text-align: center; /* Center the course name text */
+}
+
+.course-details p {
+  margin: 5px 0 0;
+  font-size: 16px;
+  color: #777;
+  text-align: center; /* Center the course time text */
+}
+
+/* Button styling */
+.add-btn,
+.remove-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3174ad;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-btn:hover,
+.remove-btn:hover {
+  background-color: #24578a;
+  transform: translateY(-3px); /* Slight lift on hover */
+}
+
+.calendar-container {
+  height: 80vh;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05); /* Soft shadow */
+  margin-top: 50px;
+}

@@ -1,72 +1,290 @@
+/* Global Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
-/* Center the content in the landing section */
-.landing-section {
+/* Landing Page Layout */
+.landing-page {
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* Header Section */
+.header {
+  height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #cbd2a4,
+    #e9eed9
+  ); /* Updated gradient colors */
+  color: #54473f; /* Darker text */
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  height: 100vh; /* Full viewport height */
-  background: #f0f0f0; /* Optional: Add a light background to the whole landing section */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
-/* Student Login section */
+.header .logo {
+  width: 150px; /* Set the width */
+  height: 150px; /* Set the height to match width for a circle */
+  border-radius: 50%; /* Make the logo round */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  margin-bottom: 20px;
+  animation: fadeInUp 0.8s forwards;
+}
+
+.header h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: fadeInUp 1s forwards;
+}
+
+.header p {
+  font-size: 1.5rem;
+  margin-bottom: 50px;
+  margin-left: -10px; /* Adjust this value as needed to move the text left */
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: fadeInUp 1.2s forwards;
+}
+
+.scroll-down {
+  padding: 10px 20px;
+  background-color: #9a7e6f; /* Button background */
+  color: white;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.scroll-down:hover {
+  background-color: #54473f; /* Darker hover color */
+  transform: scale(1.1);
+}
+
+/* Scroll Section */
+.scroll-section {
+  padding: 80px 20px; /* Decreased padding for less space */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.scroll-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #54473f; /* Darker text for headings */
+}
+
+.scroll-section p {
+  font-size: 1.2rem;
+  color: #9a7e6f; /* Softer text for paragraphs */
+  line-height: 1.7; /* Increased line-height for readability */
+  max-width: 600px; /* Limit text width for better readability */
+  margin: 0 auto; /* Center the text */
+}
+
+/* Feature card styling */
+.features {
+  display: flex;
+  justify-content: space-around;
+  gap: 60px; /* Increased gap for more space between cards */
+  flex-wrap: wrap;
+  margin-top: 50px; /* Add margin to avoid crowding with the previous section */
+}
+
+.feature-card {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 350px; /* Fix card width to prevent stretching */
+  max-width: 100%; /* Ensure it stays responsive */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  color: #9a7e6f; /* Change icon color to match design */
+  margin-bottom: 20px; /* Space below the icon */
+}
+
+/* Login Section */
+.login-section {
+  padding: 100px 20px; /* Increased padding for more breathing room */
+  background-color: #e9eed9; /* Light background */
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  gap: 60px; /* More spacing between login boxes */
+  flex-wrap: wrap;
+}
+
+/* Student and Faculty login boxes */
 .Student-login,
 .HR-login {
-  /* Combined class for both sections */
-  text-align: center; /* Center text inside the div */
-  padding-top: 50px;
-  padding-bottom: 50px;
-  background: #ffffff; /* White background for login sections */
-  border-radius: 10px; /* Optional: rounded corners */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow effect */
-  margin: 20px; /* Space between sections */
+  text-align: center;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer; /* Make cards clickable */
+  overflow: hidden; /* Hide overflow to contain the circle */
 }
 
-/* Adding margin to the heading and paragraph */
-.Student-login h1,
-.HR-login h1 {
-  /* Apply styles to both headings */
-  margin-bottom: 20px; /* Space between heading and paragraph */
-  font-size: 36px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+/* Circle around icon */
+.Student-login::before,
+.HR-login::before {
+  content: "";
+  position: absolute;
+  top: 11%; /* Move the circle further up */
+  left: 47%; /* Shift the circle slightly to the left */
+  width: 120px; /* Initial size around the icon */
+  height: 120px;
+  background-color: #9a7e6f; /* Circle color */
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(1); /* Centered around the icon */
+  transition: all 0.4s ease;
+  z-index: 0;
 }
 
-.Student-login p,
-.HR-login p {
-  /* Apply styles to both paragraphs */
-  margin-bottom: 20px; /* Space between paragraph and buttons */
-  font-size: 20px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+/* Hover effect for the circle */
+.Student-login:hover::before,
+.HR-login:hover::before {
+  width: 380px; /* Expanded by 5px */
+  height: 380px; /* Expanded by 5px */
+  background-color: #9a7e6f;
+  transform: translate(-50%, -50%) scale(1); /* Circle expands smoothly */
 }
 
-/* Button styles for landing page */
-.myButton {
-  padding: 12px 24px; /* Increased padding for a larger button */
-  background-color: #007bff; /* Primary button color */
-  color: white; /* Button text color */
-  border: none; /* No border */
-  border-radius: 20px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  margin: 10px; /* Space between buttons */
-  font-size: 18px; /* Increased font size */
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+/* Icons inside login boxes */
+.Student-login .icon,
+.HR-login .icon {
+  position: relative;
+  z-index: 2; /* Icons stay above the expanding circle */
+  font-size: 3rem;
+  color: white; /* Ensure the icon stays visible */
 }
 
-.myButton:hover {
-  background-color: #3f00b3; /* Darker color on hover */
-  transform: scale(1.05); /* Slight scaling effect */
-  animation: bounce 1.1s ease; /* Add bounce animation */
+.Student-login:hover .icon,
+.HR-login:hover .icon {
+  color: white; /* Keep icon white when hovered */
 }
 
-@keyframes bounce {
-  0% {
+/* Hover effect for heading and text */
+.Student-login:hover h2,
+.HR-login:hover h2,
+.Student-login:hover p,
+.HR-login:hover p {
+  color: #000; /* Make text darker/brighter on hover */
+}
+
+/* Heading styles */
+h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #54473f; /* Darker heading color */
+  position: relative;
+  z-index: 2; /* Keep above the circle */
+  transition: color 0.3s ease;
+}
+
+/* Paragraph text styles */
+p {
+  font-size: 1rem;
+  margin-bottom: 30px;
+  color: #9a7e6f; /* Softer text color */
+  max-width: 250px; /* Limit text width for better readability */
+  margin: 0 auto;
+  position: relative;
+  z-index: 2; /* Keep above the circle */
+  transition: color 0.3s ease;
+}
+
+/* Button Styles */
+.action-button {
+  padding: 15px 30px;
+  background-color: #9a7e6f; /* Primary button color */
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  margin: 10px;
+  position: relative;
+  z-index: 2; /* Keep buttons above the circle */
+}
+
+.action-button:hover {
+  background-color: #54473f; /* Darker hover color */
+  transform: scale(1.05);
+}
+
+.secondary {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #54473f; /* Darker text for secondary buttons */
+}
+
+.secondary:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
     transform: translateY(0);
   }
-  50% {
-    transform: translateY(-5px);
+}
+
+/* Footer Section */
+footer {
+  background-color: #54473f; /* Dark footer */
+  padding: 20px;
+  text-align: center;
+}
+
+footer p {
+  font-size: 1rem;
+  color: white; /* Ensure the copyright text is white */
+  margin: 0;
+  text-align: center;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .login-container,
+  .features {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px; /* Reduce gap on mobile for better use of space */
+  }
+
+  .feature-card {
+    width: 90%; /* Make cards take up more space on small screens */
   }
 }

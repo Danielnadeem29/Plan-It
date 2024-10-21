@@ -1,0 +1,116 @@
+/* Main Container */
+.student-search {
+  padding: 40px;
+  background: linear-gradient(135deg, #E9EED9, #CBD2A4);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.3s ease;
+}
+
+.student-search h1 {
+  font-size: 3rem;
+  color: #333;
+  margin-bottom: 40px;
+  text-align: center;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+/* Search and Filter Controls */
+.search-controls {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
+  justify-content: center;
+  width: 100%;
+  max-width: 800px;
+}
+
+.search-controls input {
+  width: 60%;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 2px solid #CBD2A4;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-controls input:focus {
+  border-color: #9A7E6F;
+}
+
+.search-controls select {
+  padding: 10px;
+  border-radius: 30px;
+  border: 2px solid #CBD2A4;
+  font-size: 1rem;
+  background-color: white;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-controls select:focus {
+  border-color: #9A7E6F;
+}
+
+/* Students List */
+.students-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.student-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.student-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.student-card h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.student-card p {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.8;
+  transition: color 0.3s ease;
+}
+
+/* Button Styling */
+button {
+  padding: 10px 20px;
+  background-color: #9A7E6F;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #54473F;
+  transform: translateY(-3px);
+}
