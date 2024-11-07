@@ -8,8 +8,8 @@ export const CourseContext = createContext();
 export const CourseProvider = ({ children }) => {
   const [courses, setCourses] = useState([
     {
-      courseName: 'CS 315',
-      courseCode: 'CS315',
+      courseName: 'CSC 315',
+      courseCode: 'CSC 315',
       credits: 3,
       days: ['Monday', 'Wednesday'],
       startTime: moment('09:00 AM', 'h:mm A'),
@@ -26,6 +26,15 @@ export const CourseProvider = ({ children }) => {
       duration: 1.5,
     },
     // Add other predefined courses...
+    {
+      courseName: 'CSC 126',
+      courseCode: 'CSC126',
+      credits: 4,
+      days: ['Tuesday', 'Thursday'],
+      startTime: moment('8:00 AM', 'h:mm A'),
+      endTime: moment('10:30 AM', 'h:mm A'),
+      duration: 1.5,
+    },
   ]);
 
   // Function to add a new course
