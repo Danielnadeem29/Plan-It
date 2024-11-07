@@ -3,15 +3,15 @@ import './StudentNotification.css';
 
 const StudentNotification = () => {
   // Initial notifications (fake messages)
-    const initialNotifications = [
-    { id: 1, message: 'Schedule a meeting with your advisor' },
-    { id: 2, message: 'Course registration opens tomorrow' },
-    { id: 3, message: 'New spot opened up in Math 101' },
-    { id: 4, message: 'Reminder: Financial aid deadline is approaching' },
-    { id: 5, message: 'Midterm exams start next week' },
-    { id: 6, message: 'Join the computer science club!' },
-    { id: 7, message: 'Your lab assignment has been graded' }
-];
+  const initialNotifications = [
+    { id: 1, message: 'Schedule a meeting with your advisor', read: false },
+    { id: 2, message: 'Course registration opens tomorrow', read: false },
+    { id: 3, message: 'New spot opened up in Math 101', read: false },
+    { id: 4, message: 'Reminder: Financial aid deadline is approaching', read: false },
+    { id: 5, message: 'Midterm exams start next week', read: false },
+    { id: 6, message: 'Join the computer science club!', read: false },
+    { id: 7, message: 'Your lab assignment has been graded', read: false }
+  ];
 
   const [notifications, setNotifications] = useState(initialNotifications);
 
@@ -21,9 +21,11 @@ const StudentNotification = () => {
     setNotifications(updatedNotifications);
   };
 
-  // Function to handle replying to a notification (for demo purposes, this just alerts a message)
-  const replyNotification = (message) => {
-    alert(`Replying to: ${message}`);
+  // Function to toggle read status of a notification
+  const toggleReadStatus = (id) => {
+    setNotifications(notifications.map(notification =>
+      notification.id === id ? { ...notification, read: !notification.read } : notification
+    ));
   };
 
   return (
@@ -34,11 +36,24 @@ const StudentNotification = () => {
           <p>No new notifications</p>
         ) : (
           notifications.map(notification => (
-            <div key={notification.id} className="notification-item">
+            <div 
+              key={notification.id} 
+              className={`notification-item ${notification.read ? 'read' : ''}`}
+            >
               <p>{notification.message}</p>
               <div className="notification-actions">
-                <button className="reply-btn" onClick={() => replyNotification(notification.message)}>Reply</button>
-                <button className="delete-btn" onClick={() => deleteNotification(notification.id)}>Delete</button>
+                <button 
+                  className="read-btn" 
+                  onClick={() => toggleReadStatus(notification.id)}
+                >
+                  {notification.read ? 'Mark as Unread' : 'Mark as Read'}
+                </button>
+                <button 
+                  className="delete-btn" 
+                  onClick={() => deleteNotification(notification.id)}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           ))
