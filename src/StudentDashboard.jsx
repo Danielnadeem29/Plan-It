@@ -3,6 +3,7 @@ import './StudentDashboard.css';
 import { SlCalender } from 'react-icons/sl'; // Calendar icon for My Schedule
 import { IoMdNotifications } from "react-icons/io"; // Notification icon
 import { GoChecklist } from "react-icons/go"; // Checklist icon for Registered Courses
+import { FaChalkboard } from 'react-icons/fa'; // Icon for Whiteboard
 import { useNavigate } from 'react-router-dom'; // For navigation
 
 const StudentDashboard = () => {
@@ -21,6 +22,11 @@ const StudentDashboard = () => {
   // Function to navigate to StudentNotification page
   const goToNotifications = () => {
     navigate('/student-notifications'); // Correct path for notifications
+  };
+
+  // Function to navigate to Collaborative Whiteboard page
+  const goToWhiteboard = () => {
+    navigate('/collaborative-whiteboard'); // Correct path for whiteboard
   };
 
   // Add fade-in animation on component mount
@@ -66,6 +72,16 @@ const StudentDashboard = () => {
             <p>Track your registered courses, drop or add courses, and plan your academic journey.</p>
           </div>
           <button className="action-button">Manage Courses</button>
+        </div>
+
+        {/* Collaborative Whiteboard Section */}
+        <div className="dashboard-card" onClick={goToWhiteboard}>
+          <FaChalkboard className="icon" />
+          <div className="card-content">
+            <h2>Collaborative Whiteboard</h2>
+            <p>Work together with your peers on a shared whiteboard in real-time.</p>
+          </div>
+          <button className="action-button">Start Whiteboard</button>
         </div>
       </div>
     </div>

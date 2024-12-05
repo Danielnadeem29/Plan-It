@@ -1,0 +1,57 @@
+.whiteboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: #f9fafc;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.canvas-toolbar {
+  display: flex;
+  gap: 15px;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.toolbar-btn {
+  padding: 10px 15px;
+  border: none;
+  background-color: #3174ad;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.toolbar-btn:hover {
+  background-color: #24578a;
+}
+
+.toolbar-input {
+  width: 40px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+}
+
+.toolbar-select {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: white;
+}
+
+canvas {
+  width: 100%;
+  height: calc(100vh - 150px);
+  border: 2px solid #ccc;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
