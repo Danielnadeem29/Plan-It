@@ -3,6 +3,7 @@ import './HRDashboard.css';
 import { MdOutlineManageSearch } from 'react-icons/md'; // Manage Search icon
 import { AiFillNotification } from 'react-icons/ai'; // Notification icon
 import { GrTableAdd } from 'react-icons/gr'; // Table Add icon for Course Pool
+import { FaMoneyCheckAlt } from 'react-icons/fa'; // Payroll icon
 import { useNavigate } from 'react-router-dom'; // For navigation
 
 const HRDashboard = () => {
@@ -29,6 +30,10 @@ const HRDashboard = () => {
 
   const goToCoursePool = () => {
     navigate('/course-pool'); // Navigate to HRCoursePool page
+  };
+
+  const goToPayroll = () => {
+    navigate('/hr-payroll'); // Navigate to HR Payroll page
   };
 
   return (
@@ -63,6 +68,16 @@ const HRDashboard = () => {
             <h2>Course Pool</h2>
             <p>Manage course offerings and enrollments.</p>
             <button className="action-button">Manage Courses</button>
+          </div>
+        </div>
+
+        {/* Payroll section */}
+        <div className="dashboard-item" onClick={goToPayroll}>
+          <FaMoneyCheckAlt className="icon" />
+          <div className="item-info">
+            <h2>Payroll</h2>
+            <p>View and manage payroll for students and staff.</p>
+            <button className="action-button">View Payroll</button>
           </div>
         </div>
       </div>

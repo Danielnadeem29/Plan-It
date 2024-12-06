@@ -4,6 +4,7 @@ import { SlCalender } from 'react-icons/sl'; // Calendar icon for My Schedule
 import { IoMdNotifications } from "react-icons/io"; // Notification icon
 import { GoChecklist } from "react-icons/go"; // Checklist icon for Registered Courses
 import { FaChalkboard } from 'react-icons/fa'; // Icon for Whiteboard
+import { MdVideoCall } from 'react-icons/md'; // Video call icon for Online Meeting
 import { useNavigate } from 'react-router-dom'; // For navigation
 
 const StudentDashboard = () => {
@@ -11,22 +12,27 @@ const StudentDashboard = () => {
 
   // Function to navigate to StudentSchedule page
   const goToSchedule = () => {
-    navigate('/student-schedule'); // Correct path for student schedule
+    navigate('/student-schedule');
   };
 
   // Function to navigate to StudentRegisteredCourses page
   const goToRegisteredCourses = () => {
-    navigate('/registered-courses'); // Correct path for registered courses
+    navigate('/registered-courses');
   };
 
   // Function to navigate to StudentNotification page
   const goToNotifications = () => {
-    navigate('/student-notifications'); // Correct path for notifications
+    navigate('/student-notifications');
   };
 
   // Function to navigate to Collaborative Whiteboard page
   const goToWhiteboard = () => {
-    navigate('/collaborative-whiteboard'); // Correct path for whiteboard
+    navigate('/collaborative-whiteboard');
+  };
+
+  // Function to navigate to Online Meeting page
+  const goToOnlineMeeting = () => {
+    navigate('/online-meeting');
   };
 
   // Add fade-in animation on component mount
@@ -82,6 +88,16 @@ const StudentDashboard = () => {
             <p>Work together with your peers on a shared whiteboard in real-time.</p>
           </div>
           <button className="action-button">Start Whiteboard</button>
+        </div>
+
+        {/* Online Meeting Section */}
+        <div className="dashboard-card" onClick={goToOnlineMeeting}>
+          <MdVideoCall className="icon" />
+          <div className="card-content">
+            <h2>Online Meeting</h2>
+            <p>Join a meeting with your instructor or peers using a meeting ID and password.</p>
+          </div>
+          <button className="action-button">Join Meeting</button>
         </div>
       </div>
     </div>

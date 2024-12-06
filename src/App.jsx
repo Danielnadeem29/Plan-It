@@ -12,6 +12,9 @@ import HRNotification from './HRNotification.jsx';
 import StudentSearch from './StudentSearch.jsx';
 import HRCoursePool from './HRCoursePool.jsx';
 import CollaborativeWhiteboard from './CollaborativeWhiteboard.jsx';
+import OnlineMeeting from './OnlineMeeting.jsx'; // Import the OnlineMeeting component
+import MeetingForm from './MeetingForm.jsx'; // Import the MeetingForm component
+import HRPayroll from './HRPayroll.jsx'; // Import the HRPayroll component
 import { CourseProvider } from './CourseContext.jsx';
 
 function App() {
@@ -32,6 +35,10 @@ function App() {
           <Route path="/registered-courses" element={<StudentRegisteredCourses />} />
           <Route path="/student-notifications" element={<StudentNotification />} />
 
+          {/* Meeting Functionality */}
+          <Route path="/online-meeting" element={<OnlineMeeting />} /> {/* Join or Host Meeting */}
+          <Route path="/create-meeting" element={<MeetingForm />} /> {/* Host Meeting Form */}
+
           {/* Collaborative Whiteboard */}
           <Route path="/collaborative-whiteboard" element={<CollaborativeWhiteboard />} />
 
@@ -40,6 +47,9 @@ function App() {
           <Route path="/student-search" element={<StudentSearch />} />
           <Route path="/staff-notifications" element={<HRNotification />} />
           <Route path="/course-pool" element={<HRCoursePool />} />
+
+          {/* HR Payroll and Staff Search */}
+          <Route path="/hr-payroll" element={<HRPayroll />} />
 
           {/* Fallback for unknown routes */}
           <Route path="*" element={<h1>404 - Page Not Found</h1>} />
