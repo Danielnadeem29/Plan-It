@@ -1,0 +1,149 @@
+/* Main container */
+.event-scheduler {
+  padding: 40px;
+  max-width: 800px;
+  margin: 40px auto;
+  background: linear-gradient(135deg, #f7f7f9, #ffffff);
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  font-family: "Roboto", sans-serif;
+}
+
+/* Page title and description */
+h1 {
+  text-align: center;
+  color: #2d3748;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.description {
+  text-align: center;
+  color: #4a5568;
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+/* Form styling */
+.event-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.event-form input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-form input:focus {
+  border-color: #3182ce;
+  box-shadow: 0 4px 8px rgba(49, 130, 206, 0.2);
+  outline: none;
+}
+
+.submit-button {
+  padding: 14px;
+  background: #3182ce;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button:hover {
+  background: #2b6cb0;
+  transform: translateY(-3px);
+}
+
+/* Event List */
+.event-list {
+  margin-top: 40px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.event-list h2 {
+  font-size: 1.8rem;
+  color: #2d3748;
+  margin-bottom: 20px;
+}
+
+.event-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.event-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.event-item:last-child {
+  border-bottom: none;
+}
+
+.event-item h3 {
+  font-size: 1.2rem;
+  color: #2d3748;
+  margin: 0;
+}
+
+.event-item p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+  color: #4a5568;
+}
+
+/* Buttons for Edit and Remove */
+.event-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-button,
+.remove-button {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.edit-button {
+  background: #38a169; /* Green for edit */
+  color: white;
+}
+
+.edit-button:hover {
+  background: #2f855a;
+}
+
+.remove-button {
+  background: #e53e3e; /* Red for remove */
+  color: white;
+}
+
+.remove-button:hover {
+  background: #c53030;
+}

@@ -5,6 +5,7 @@ import { IoMdNotifications } from "react-icons/io"; // Notification icon
 import { GoChecklist } from "react-icons/go"; // Checklist icon for Registered Courses
 import { FaChalkboard } from 'react-icons/fa'; // Icon for Whiteboard
 import { MdVideoCall } from 'react-icons/md'; // Video call icon for Online Meeting
+import { AiOutlineCalendar } from 'react-icons/ai'; // Calendar icon for Events on Campus
 import { useNavigate } from 'react-router-dom'; // For navigation
 
 const StudentDashboard = () => {
@@ -33,6 +34,11 @@ const StudentDashboard = () => {
   // Function to navigate to Online Meeting page
   const goToOnlineMeeting = () => {
     navigate('/online-meeting');
+  };
+
+  // Function to navigate to Events on Campus page
+  const goToEventsOnCampus = () => {
+    navigate('/events-on-campus');
   };
 
   // Add fade-in animation on component mount
@@ -98,6 +104,16 @@ const StudentDashboard = () => {
             <p>Join a meeting with your instructor or peers using a meeting ID and password.</p>
           </div>
           <button className="action-button">Join Meeting</button>
+        </div>
+
+        {/* Events on Campus Section */}
+        <div className="dashboard-card" onClick={goToEventsOnCampus}>
+          <AiOutlineCalendar className="icon" />
+          <div className="card-content">
+            <h2>Events on Campus</h2>
+            <p>View all upcoming events and workshops on a convenient calendar.</p>
+          </div>
+          <button className="action-button">View Events</button>
         </div>
       </div>
     </div>

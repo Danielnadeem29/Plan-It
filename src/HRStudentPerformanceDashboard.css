@@ -1,0 +1,134 @@
+.performance-dashboard {
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
+  background: #f8fafc;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Roboto", sans-serif;
+}
+
+h1,
+h2 {
+  text-align: center;
+  color: #2d3748;
+  margin-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.student-list ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.student-list li {
+  background: #e2e8f0;
+  padding: 15px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  text-align: center;
+  width: 120px;
+}
+
+.student-list li:hover,
+.student-list li.active {
+  background: #3182ce;
+  color: white;
+}
+
+.student-details {
+  margin-top: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.metrics-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.metric {
+  text-align: center;
+  background: #edf2f7;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.grades-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.grades-table th,
+.grades-table td {
+  border: 1px solid #e2e8f0;
+  padding: 10px;
+  text-align: left;
+}
+
+.grades-table th {
+  background: #f7fafc;
+  font-weight: bold;
+}
+
+.notification-message {
+  width: 100%;
+  max-width: 400px;
+  height: 100px;
+  margin: 20px auto;
+  display: block;
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.notification-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background: #38a169;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.notification-btn:hover {
+  background: #2f855a;
+}
+
+@media (max-width: 768px) {
+  .metrics-container {
+    grid-template-columns: 1fr;
+  }
+
+  .student-list li {
+    width: 100%;
+  }
+}

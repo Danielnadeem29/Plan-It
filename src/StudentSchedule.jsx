@@ -1,5 +1,4 @@
-import React, { useContext, useState } from "react";
-import { CourseContext } from "./CourseContext";
+import React, { useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -7,98 +6,114 @@ import "./StudentSchedule.css";
 
 const localizer = momentLocalizer(moment);
 
+// Expanded dummy course data
+const dummyCourses = [
+  {
+    courseCode: "CS101",
+    courseName: "Introduction to Computer Science",
+    professor: "Dr. Smith",
+    days: ["Mon", "Wed"],
+    startTime: moment("08:00", "HH:mm"),
+    endTime: moment("09:30", "HH:mm"),
+    duration: 1.5,
+  },
+  {
+    courseCode: "MATH202",
+    courseName: "Calculus II",
+    professor: "Dr. Johnson",
+    days: ["Tue", "Thu"],
+    startTime: moment("10:00", "HH:mm"),
+    endTime: moment("11:30", "HH:mm"),
+    duration: 1.5,
+  },
+  {
+    courseCode: "ENG303",
+    courseName: "English Literature",
+    professor: "Prof. Brown",
+    days: ["Mon", "Wed"],
+    startTime: moment("12:00", "HH:mm"),
+    endTime: moment("13:30", "HH:mm"),
+    duration: 1.5,
+  },
+  {
+    courseCode: "HIST204",
+    courseName: "World History",
+    professor: "Dr. White",
+    days: ["Tue", "Thu"],
+    startTime: moment("14:00", "HH:mm"),
+    endTime: moment("15:30", "HH:mm"),
+    duration: 1.5,
+  },
+  {
+    courseCode: "PHY101",
+    courseName: "Physics I",
+    professor: "Dr. Adams",
+    days: ["Mon", "Wed"],
+    startTime: moment("16:00", "HH:mm"),
+    endTime: moment("17:30", "HH:mm"),
+    duration: 1.5,
+  },
+  {
+    courseCode: "CHEM110",
+    courseName: "General Chemistry",
+    professor: "Dr. Green",
+    days: ["Fri"],
+    startTime: moment("10:00", "HH:mm"),
+    endTime: moment("12:00", "HH:mm"),
+    duration: 2,
+  },
+];
+
 const StudentSchedule = () => {
-  const { courses } = useContext(CourseContext);
   const [enrolledCourses, setEnrolledCourses] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterDay, setFilterDay] = useState("");
   const [filterProfessor, setFilterProfessor] = useState("");
-  const [notification, setNotification] = useState(null);
 
-  // Check for conflicts
-  const hasConflict = (newCourse) => {
-    return enrolledCourses.some((course) =>
-      course.days.some((day) =>
-        newCourse.days.includes(day) &&
-        (
-          newCourse.startTime.isBetween(course.startTime, course.endTime, null, "[)") ||
-          newCourse.endTime.isBetween(course.startTime, course.endTime, null, "[)") ||
-          course.startTime.isBetween(newCourse.startTime, newCourse.endTime, null, "[)") ||
-          course.endTime.isBetween(newCourse.startTime, newCourse.endTime, null, "[)")
-        )
-      )
+  const filteredCourses = dummyCourses
+    .filter((course) =>
+      course.courseName.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .filter((course) => (filterDay ? course.days.includes(filterDay) : true))
+    .filter((course) =>
+      filterProfessor
+        ? course.professor.toLowerCase().includes(filterProfessor.toLowerCase())
+        : true
     );
-  };
 
-  // Add a course to the schedule
   const enrollInCourse = (course) => {
-    if (hasConflict(course)) {
-      setNotification({ type: "error", message: "Schedule conflict detected!" });
-      return;
-    }
     if (!enrolledCourses.some((enrolled) => enrolled.courseCode === course.courseCode)) {
       setEnrolledCourses((prev) => [...prev, course]);
-      setNotification({ type: "success", message: `${course.courseName} added successfully!` });
-    } else {
-      setNotification({ type: "error", message: `${course.courseName} is already in your schedule!` });
     }
   };
 
-  // Remove a course
   const removeFromSchedule = (courseCode) => {
     setEnrolledCourses((prev) => prev.filter((course) => course.courseCode !== courseCode));
-    setNotification({ type: "success", message: "Course removed successfully!" });
   };
 
-  // Filter courses
-  const filteredCourses = courses
-    .filter((course) => course.courseName.toLowerCase().includes(searchTerm.toLowerCase()))
-    .filter((course) => (filterDay ? course.days.includes(filterDay) : true))
-    .filter((course) => (filterProfessor ? course.professor.toLowerCase().includes(filterProfessor.toLowerCase()) : true));
-
-  // Generate events for the calendar
-  const generateWeeklyEvents = (course) => {
-    const semesterStart = moment(new Date(2024, 7, 20));
-    const semesterEnd = moment(new Date(2024, 11, 16));
+  const calendarEvents = enrolledCourses.flatMap((course) => {
     const events = [];
-
     course.days.forEach((day) => {
-      let currentDay = semesterStart.clone().day(day);
-
-      while (currentDay.isBefore(semesterEnd)) {
-        const eventStart = currentDay.clone().set({
-          hour: course.startTime.hour(),
-          minute: course.startTime.minute(),
-        });
-        const eventEnd = eventStart.clone().add(course.duration, "hours");
-
-        events.push({
-          title: `${course.courseName} (${course.courseCode})`,
-          start: eventStart.toDate(),
-          end: eventEnd.toDate(),
-        });
-        currentDay.add(1, "week");
-      }
+      const eventStart = moment().day(day).set({
+        hour: course.startTime.hour(),
+        minute: course.startTime.minute(),
+      });
+      const eventEnd = eventStart.clone().add(course.duration, "hours");
+      events.push({
+        title: course.courseName,
+        start: eventStart.toDate(),
+        end: eventEnd.toDate(),
+      });
     });
-
     return events;
-  };
-
-  const calendarEvents = enrolledCourses.flatMap(generateWeeklyEvents);
+  });
 
   return (
     <div className="schedule-container">
-      <h1 className="heading">My Class Schedule</h1>
+      <header className="header">
+        <h1 className="heading">Student Class Scheduler</h1>
+      </header>
 
-      {/* Notifications */}
-      {notification && (
-        <div className={`notification ${notification.type}`}>
-          <p>{notification.message}</p>
-          <button onClick={() => setNotification(null)}>Close</button>
-        </div>
-      )}
-
-      {/* Filters */}
       <div className="filters">
         <input
           type="text"
@@ -122,57 +137,47 @@ const StudentSchedule = () => {
         />
       </div>
 
-      {/* Available Courses */}
       <div className="course-list-container">
-        <h2>Available Courses</h2>
+        <h2 className="sub-heading">Available Courses</h2>
         <ul className="course-list">
-          {filteredCourses.length > 0 ? (
-            filteredCourses.map((course) => (
-              <li key={course.courseCode} className="course-item">
-                <h3>{course.courseName} ({course.courseCode})</h3>
-                <p>Professor: {course.professor}</p>
-                <button className="add-btn" onClick={() => enrollInCourse(course)}>
-                  Enroll
-                </button>
-              </li>
-            ))
-          ) : (
-            <p>No courses available.</p>
-          )}
+          {filteredCourses.map((course) => (
+            <li key={course.courseCode} className="course-item">
+              <h3 className="course-name">{course.courseName}</h3>
+              <p className="course-info">Professor: {course.professor}</p>
+              <button className="add-btn" onClick={() => enrollInCourse(course)}>
+                Enroll
+              </button>
+            </li>
+          ))}
         </ul>
       </div>
 
-      {/* Enrolled Courses */}
       <div className="schedule-list-container">
-        <h2>My Added Classes</h2>
+        <h2 className="sub-heading">My Added Classes</h2>
         <ul className="course-list">
-          {enrolledCourses.length > 0 ? (
-            enrolledCourses.map((course) => (
-              <li key={course.courseCode} className="course-item">
-                <h3>{course.courseName} ({course.courseCode})</h3>
-                <p>Professor: {course.professor}</p>
-                <button className="remove-btn" onClick={() => removeFromSchedule(course.courseCode)}>
-                  Remove
-                </button>
-              </li>
-            ))
-          ) : (
-            <p>No courses added.</p>
-          )}
+          {enrolledCourses.map((course) => (
+            <li key={course.courseCode} className="course-item">
+              <h3 className="course-name">{course.courseName}</h3>
+              <p className="course-info">Professor: {course.professor}</p>
+              <button
+                className="remove-btn"
+                onClick={() => removeFromSchedule(course.courseCode)}
+              >
+                Remove
+              </button>
+            </li>
+          ))}
         </ul>
       </div>
 
-      {/* Calendar */}
       <div className="calendar-container">
+        <h2 className="sub-heading">Schedule Calendar</h2>
         <Calendar
           localizer={localizer}
           events={calendarEvents}
           startAccessor="start"
           endAccessor="end"
-          defaultView="month"
-          views={["month", "week"]}
-          step={30}
-          timeslots={2}
+          defaultView="week"
           style={{ height: 500 }}
         />
       </div>

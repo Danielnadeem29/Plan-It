@@ -1,153 +1,78 @@
-/* Main Container */
 .hr-dashboard {
   padding: 40px;
-  background: linear-gradient(135deg, #E9EED9, #CBD2A4); /* Soft gradient background */
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: 'Poppins', sans-serif;
-  transition: background 0.3s ease;
-}
-
-/* Page Heading */
-h1 {
-  font-size: 3rem;
-  color: #333;
-  margin-bottom: 40px;
-  text-align: center;
-  letter-spacing: 2px;
-  font-weight: 700;
-}
-
-/* Dashboard Section */
-.dashboard-section {
-  display: grid;
-  grid-template-columns: 1fr; /* Single column layout */
-  gap: 40px;
-  width: 100%;
   max-width: 1200px;
-}
-
-/* Dashboard Items (Cards) */
-.dashboard-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #ffffff;
+  margin: auto;
+  background: #f8fafc;
   border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
-  position: relative;
-  cursor: pointer;
-  opacity: 0;
-  transform: translateY(30px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
 }
 
-/* Visible Cards */
+h1 {
+  text-align: center;
+  color: #2d3748;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.dashboard-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.dashboard-item {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  width: 300px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
 .dashboard-item.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Hover Effect for Cards */
 .dashboard-item:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-  border: 2px solid #9A7E6F;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* Icon Styling */
 .icon {
-  width: 50px;
-  height: 50px;
-  color: #CBD2A4;
-  margin-right: 20px;
-  transition: transform 0.3s ease;
-}
-
-.dashboard-item:hover .icon {
-  transform: rotate(15deg) scale(1.2); /* Fun rotate and zoom effect */
-}
-
-/* Item Info Section */
-.item-info {
-  flex-grow: 1;
-  text-align: left;
+  font-size: 2.5rem;
+  color: #3182ce;
+  margin-bottom: 10px;
 }
 
 .item-info h2 {
-  font-size: 1.8rem;
-  color: #333;
+  font-size: 1.5rem;
+  color: #2d3748;
   margin-bottom: 10px;
-  font-weight: 600;
-  transition: color 0.3s ease;
 }
 
 .item-info p {
+  color: #718096;
   font-size: 1rem;
-  color: #666;
-  margin: 0;
-  line-height: 1.8;
-  max-width: 480px;
-  transition: color 0.3s ease;
+  margin-bottom: 15px;
 }
 
-/* Hover Effects for Text */
-.dashboard-item:hover h2 {
-  color: #54473F;
-}
-
-.dashboard-item:hover p {
-  color: #444;
-}
-
-/* Button Styling */
 .action-button {
   padding: 10px 20px;
-  background-color: #9A7E6F;
+  font-size: 1rem;
+  background: #3182ce;
   color: white;
   border: none;
-  border-radius: 50px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s;
-  font-size: 1rem;
-  font-weight: bold;
-  margin-right: 20px;
 }
 
 .action-button:hover {
-  background-color: #54473F;
-  transform: translateY(-3px);
-}
-
-/* Media Queries for Responsive Design */
-@media (max-width: 768px) {
-  .dashboard-item {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  h2 {
-    font-size: 1.6rem;
-  }
-
-  p {
-    font-size: 1rem;
-  }
-
-  .action-button {
-    padding: 10px 18px;
-    font-size: 0.9rem;
-    margin: 10px 0;
-  }
-
-  .icon {
-    margin-bottom: 20px;
-  }
+  background: #2b6cb0;
 }

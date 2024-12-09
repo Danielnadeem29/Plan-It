@@ -1,173 +1,129 @@
 /* Main Container */
 .student-dashboard {
   padding: 40px;
-  background: linear-gradient(135deg, #E9EED9, #CBD2A4); /* Soft background gradient */
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb); /* Subtle gray gradient */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
   transition: background 0.3s ease;
 }
 
 /* Page Heading */
-h1 {
-  font-size: 2.5rem;
-  color: #333;
+.student-dashboard h1 {
+  font-size: 3rem;
+  color: #1f2937; /* Dark gray */
   margin-bottom: 40px;
   text-align: center;
-  letter-spacing: 1.5px;
   font-weight: 700;
+  letter-spacing: 1px;
 }
 
-/* Grid Layout for Dashboard */
+/* Dashboard Section Layout */
 .dashboard-section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Adaptive grid */
+  gap: 25px;
   width: 100%;
   max-width: 1200px;
 }
 
-/* Dashboard Cards */
+/* Dashboard Card */
 .dashboard-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* Adjust to spread content evenly */
-  background-color: #ffffff;
+  background: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
-  position: relative;
-  cursor: pointer;
-  overflow: hidden;
-  opacity: 0; /* Start invisible for animation */
-  transform: translateY(30px); /* Initial position for animation */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-/* Make cards visible on load */
-.dashboard-card.visible {
-  opacity: 1;
-  transform: translateY(0); /* Card slides up smoothly */
-}
-
-/* Hover effect for cards */
 .dashboard-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-  border: 2px solid #9A7E6F; /* Subtle border on hover */
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
-/* Icon Styling */
+/* Card Icon */
 .icon {
-  width: 50px;
-  height: 50px;
-  color: #CBD2A4;
-  margin-right: 20px;
-  transition: transform 0.3s ease, color 0.3s ease;
+  font-size: 3rem;
+  color: #2563eb; /* Blue for a modern look */
+  margin-bottom: 20px;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .dashboard-card:hover .icon {
-  transform: rotate(15deg) scale(1.2);
-  color: #9A7E6F; /* Match hover border color */
+  color: #1d4ed8; /* Darker blue on hover */
+  transform: scale(1.1);
 }
 
-/* Content Inside Cards */
-.card-content {
-  flex-grow: 1;
-  text-align: left;
-}
-
-h2 {
+/* Card Title */
+.dashboard-card h2 {
   font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 10px;
-  font-weight: 600;
+  color: #111827; /* Very dark gray */
+  margin-bottom: 15px;
+  font-weight: bold;
 }
 
-p {
+/* Card Description */
+.dashboard-card p {
   font-size: 1rem;
-  color: #666;
-  margin: 0;
+  color: #6b7280; /* Neutral gray */
   line-height: 1.6;
-  max-width: 450px;
 }
 
-/* Button Styling */
+/* Card Button */
 .action-button {
   padding: 10px 20px;
-  background-color: #9A7E6F; /* Original brown tone */
+  background-color: #2563eb;
   color: white;
   border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s;
+  border-radius: 8px;
   font-size: 0.9rem;
-  font-weight: bold;
-  width: auto; /* Prevent buttons from being too long */
-  max-width: 150px; /* Set a reasonable max width */
+  font-weight: 600;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .action-button:hover {
-  background-color: #54473F; /* Darker brown for hover effect */
+  background-color: #1d4ed8; /* Darker blue */
   transform: translateY(-3px);
 }
 
-/* Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Apply Animation on Card Visibility */
-.dashboard-card.visible {
-  animation: fadeInUp 0.6s ease-in-out;
-}
-
-/* Media Queries for Responsive Design */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
   .dashboard-card {
-    flex-direction: column; /* Stack content vertically on small screens */
-    text-align: center;
+    padding: 20px;
   }
 
-  h1 {
-    font-size: 2rem;
-  }
-
-  h2 {
+  .dashboard-card h2 {
     font-size: 1.3rem;
   }
 
-  p {
+  .dashboard-card p {
     font-size: 0.9rem;
   }
 
   .action-button {
     padding: 8px 16px;
     font-size: 0.8rem;
-    margin-top: 10px;
-    max-width: 120px; /* Adjust for smaller screens */
   }
 
-  .icon {
-    margin-bottom: 20px;
+  h1 {
+    font-size: 2.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .dashboard-section {
-    grid-template-columns: 1fr; /* Single column layout for very small screens */
+    grid-template-columns: 1fr; /* Single column layout */
   }
 
   h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 }
